@@ -6,7 +6,7 @@
 #
 Name     : messagelib
 Version  : 18.08.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/applications/18.08.0/src/messagelib-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/messagelib-18.08.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.08.0/src/messagelib-18.08.0.tar.xz.sig
@@ -113,7 +113,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535265313
+export SOURCE_DATE_EPOCH=1535435337
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -121,7 +121,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535265313
+export SOURCE_DATE_EPOCH=1535435337
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/messagelib
 cp COPYING %{buildroot}/usr/share/doc/messagelib/COPYING
@@ -179,6 +179,9 @@ popd
 /usr/share/messageviewer/defaultthemes/5.2/style.css
 /usr/share/messageviewer/longurlServices.json
 /usr/share/org.kde.syntax-highlighting/syntax/kmail-template.xml
+/usr/share/xdg/messagelib.categories
+/usr/share/xdg/messagelib.renamecategories
+/usr/share/xdg/messageviewer_header_themes.knsrc
 
 %files dev
 %defattr(-,root,root,-)
