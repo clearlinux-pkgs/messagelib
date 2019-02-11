@@ -18,3 +18,10 @@ kmailtransport-dev
 kldap-dev
 libkdepim-dev
 libkleo-dev
+pimcommon-dev
+kimap-dev
+kmbox-dev
+akonadi-search-dev
+kcalcore-dev
+libgpg-error-dev
+libassuan-dev

@@ -5,18 +5,18 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 18.08.0
-Release  : 3
-URL      : https://download.kde.org/stable/applications/18.08.0/src/messagelib-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/messagelib-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/messagelib-18.08.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 18.12.2
+Release  : 4
+URL      : https://download.kde.org/stable/applications/18.12.2/src/messagelib-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/messagelib-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/messagelib-18.12.2.tar.xz.sig
+Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
-Requires: messagelib-lib
-Requires: messagelib-data
-Requires: messagelib-license
-Requires: messagelib-locales
+Requires: messagelib-data = %{version}-%{release}
+Requires: messagelib-lib = %{version}-%{release}
+Requires: messagelib-license = %{version}-%{release}
+Requires: messagelib-locales = %{version}-%{release}
 BuildRequires : akonadi-contacts-dev
 BuildRequires : akonadi-dev
 BuildRequires : akonadi-mime-dev
@@ -24,6 +24,7 @@ BuildRequires : akonadi-search-dev
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules
 BuildRequires : git
 BuildRequires : gpgme-dev
 BuildRequires : grantlee-dev
@@ -44,7 +45,7 @@ BuildRequires : libgravatar-dev
 BuildRequires : libkdepim-dev
 BuildRequires : libkleo-dev
 BuildRequires : pimcommon-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : qtwebengine-dev
 BuildRequires : syntax-highlighting-dev
 
@@ -71,9 +72,9 @@ data components for the messagelib package.
 %package dev
 Summary: dev components for the messagelib package.
 Group: Development
-Requires: messagelib-lib
-Requires: messagelib-data
-Provides: messagelib-devel
+Requires: messagelib-lib = %{version}-%{release}
+Requires: messagelib-data = %{version}-%{release}
+Provides: messagelib-devel = %{version}-%{release}
 
 %description dev
 dev components for the messagelib package.
@@ -82,8 +83,8 @@ dev components for the messagelib package.
 %package lib
 Summary: lib components for the messagelib package.
 Group: Libraries
-Requires: messagelib-data
-Requires: messagelib-license
+Requires: messagelib-data = %{version}-%{release}
+Requires: messagelib-license = %{version}-%{release}
 
 %description lib
 lib components for the messagelib package.
@@ -106,26 +107,26 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-18.08.0
+%setup -q -n messagelib-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535435337
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549920006
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535435337
+export SOURCE_DATE_EPOCH=1549920006
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/messagelib
-cp COPYING %{buildroot}/usr/share/doc/messagelib/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/messagelib/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
+cp COPYING %{buildroot}/usr/share/package-licenses/messagelib/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/messagelib/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -134,8 +135,8 @@ popd
 %find_lang libmessagelist
 %find_lang libmessageviewer
 %find_lang libmimetreeparser
-%find_lang libwebengineviewer
 %find_lang libtemplateparser
+%find_lang libwebengineviewer
 
 %files
 %defattr(-,root,root,-)
@@ -275,6 +276,7 @@ popd
 /usr/include/KF5/MessageList/View
 /usr/include/KF5/MessageList/WidgetBase
 /usr/include/KF5/MessageViewer/AttachmentStrategy
+/usr/include/KF5/MessageViewer/BlockMailTrackingUrlInterceptor
 /usr/include/KF5/MessageViewer/BodyPartURLHandler
 /usr/include/KF5/MessageViewer/BufferedHtmlWriter
 /usr/include/KF5/MessageViewer/CSSHelper
@@ -471,6 +473,7 @@ popd
 /usr/include/KF5/messagelist/widgetbase.h
 /usr/include/KF5/messagelist_version.h
 /usr/include/KF5/messageviewer/attachmentstrategy.h
+/usr/include/KF5/messageviewer/blockmailtrackingurlinterceptor.h
 /usr/include/KF5/messageviewer/bodyparturlhandler.h
 /usr/include/KF5/messageviewer/bufferedhtmlwriter.h
 /usr/include/KF5/messageviewer/config-messageviewer.h
@@ -629,27 +632,27 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.9.0
+/usr/lib64/libKF5MessageComposer.so.5.10.2
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.9.0
+/usr/lib64/libKF5MessageCore.so.5.10.2
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.9.0
+/usr/lib64/libKF5MessageList.so.5.10.2
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.9.0
+/usr/lib64/libKF5MessageViewer.so.5.10.2
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.9.0
+/usr/lib64/libKF5MimeTreeParser.so.5.10.2
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.9.0
+/usr/lib64/libKF5TemplateParser.so.5.10.2
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.9.0
+/usr/lib64/libKF5WebEngineViewer.so.5.10.2
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/messageviewer_defaultgrantleeheaderstyleplugin.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/messagelib/COPYING
-/usr/share/doc/messagelib/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/messagelib/COPYING
+/usr/share/package-licenses/messagelib/COPYING.LIB
 
-%files locales -f libmessagecomposer.lang -f libmessagecore.lang -f libmessagelist.lang -f libmessageviewer.lang -f libmimetreeparser.lang -f libwebengineviewer.lang -f libtemplateparser.lang
+%files locales -f libmessagecomposer.lang -f libmessagecore.lang -f libmessagelist.lang -f libmessageviewer.lang -f libmimetreeparser.lang -f libtemplateparser.lang -f libwebengineviewer.lang
 %defattr(-,root,root,-)
 
