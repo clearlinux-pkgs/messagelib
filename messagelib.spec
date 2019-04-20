@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 18.12.3
-Release  : 5
-URL      : https://download.kde.org/stable/applications/18.12.3/src/messagelib-18.12.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.3/src/messagelib-18.12.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.3/src/messagelib-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 19.04.0
+Release  : 6
+URL      : https://download.kde.org/stable/applications/19.04.0/src/messagelib-19.04.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.0/src/messagelib-19.04.0.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.0/src/messagelib-19.04.0.tar.xz.sig
+Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: messagelib-data = %{version}-%{release}
@@ -75,6 +75,7 @@ Group: Development
 Requires: messagelib-lib = %{version}-%{release}
 Requires: messagelib-data = %{version}-%{release}
 Provides: messagelib-devel = %{version}-%{release}
+Requires: messagelib = %{version}-%{release}
 
 %description dev
 dev components for the messagelib package.
@@ -107,23 +108,22 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-18.12.3
+%setup -q -n messagelib-19.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552021875
+export SOURCE_DATE_EPOCH=1555719597
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552021875
+export SOURCE_DATE_EPOCH=1555719597
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp COPYING %{buildroot}/usr/share/package-licenses/messagelib/COPYING
@@ -200,7 +200,6 @@ popd
 /usr/include/KF5/MessageComposer/ComposerLineEdit
 /usr/include/KF5/MessageComposer/ComposerViewBase
 /usr/include/KF5/MessageComposer/ContentJobBase
-/usr/include/KF5/MessageComposer/DistributionListDialog
 /usr/include/KF5/MessageComposer/EncryptJob
 /usr/include/KF5/MessageComposer/FollowUpReminderSelectDateDialog
 /usr/include/KF5/MessageComposer/FollowupReminderCreateJob
@@ -230,6 +229,8 @@ popd
 /usr/include/KF5/MessageComposer/PluginEditorConvertTextManager
 /usr/include/KF5/MessageComposer/PluginEditorConverterBeforeConvertingData
 /usr/include/KF5/MessageComposer/PluginEditorConverterInitialData
+/usr/include/KF5/MessageComposer/PluginEditorGrammarCustomToolsViewInterface
+/usr/include/KF5/MessageComposer/PluginEditorGrammarManager
 /usr/include/KF5/MessageComposer/PluginEditorInit
 /usr/include/KF5/MessageComposer/PluginEditorInitConfigureWidget
 /usr/include/KF5/MessageComposer/PluginEditorInitInterface
@@ -249,10 +250,7 @@ popd
 /usr/include/KF5/MessageComposer/TransparentJob
 /usr/include/KF5/MessageComposer/Util
 /usr/include/KF5/MessageCore/AttachmentCompressJob
-/usr/include/KF5/MessageCore/AttachmentFromFolderJob
-/usr/include/KF5/MessageCore/AttachmentFromMimeContentJob
 /usr/include/KF5/MessageCore/AttachmentFromUrlBaseJob
-/usr/include/KF5/MessageCore/AttachmentFromUrlJob
 /usr/include/KF5/MessageCore/AttachmentFromUrlUtils
 /usr/include/KF5/MessageCore/AttachmentLoadJob
 /usr/include/KF5/MessageCore/AttachmentPart
@@ -305,6 +303,9 @@ popd
 /usr/include/KF5/MessageViewer/MessagePartRenderPlugin
 /usr/include/KF5/MessageViewer/MessagePartRendererBase
 /usr/include/KF5/MessageViewer/MessagePartRendererManager
+/usr/include/KF5/MessageViewer/MessageViewerConfigureSettingsPlugin
+/usr/include/KF5/MessageViewer/MessageViewerConfigureSettingsPluginManager
+/usr/include/KF5/MessageViewer/MessageViewerConfigureSettingsPluginWidget
 /usr/include/KF5/MessageViewer/MessageViewerSettings
 /usr/include/KF5/MessageViewer/MessageViewerUtil
 /usr/include/KF5/MessageViewer/MimeType
@@ -387,7 +388,6 @@ popd
 /usr/include/KF5/messagecomposer/composerlineedit.h
 /usr/include/KF5/messagecomposer/composerviewbase.h
 /usr/include/KF5/messagecomposer/contentjobbase.h
-/usr/include/KF5/messagecomposer/distributionlistdialog.h
 /usr/include/KF5/messagecomposer/encryptjob.h
 /usr/include/KF5/messagecomposer/followupremindercreatejob.h
 /usr/include/KF5/messagecomposer/followupreminderselectdatedialog.h
@@ -420,6 +420,8 @@ popd
 /usr/include/KF5/messagecomposer/plugineditorconverttextconfigurewidget.h
 /usr/include/KF5/messagecomposer/plugineditorconverttextinterface.h
 /usr/include/KF5/messagecomposer/plugineditorconverttextmanager.h
+/usr/include/KF5/messagecomposer/plugineditorgrammarcustomtoolsviewinterface.h
+/usr/include/KF5/messagecomposer/plugineditorgrammarmanager.h
 /usr/include/KF5/messagecomposer/plugineditorinit.h
 /usr/include/KF5/messagecomposer/plugineditorinitconfigurewidget.h
 /usr/include/KF5/messagecomposer/plugineditorinitinterface.h
@@ -440,10 +442,7 @@ popd
 /usr/include/KF5/messagecomposer/util.h
 /usr/include/KF5/messagecomposer_version.h
 /usr/include/KF5/messagecore/attachmentcompressjob.h
-/usr/include/KF5/messagecore/attachmentfromfolderjob.h
-/usr/include/KF5/messagecore/attachmentfrommimecontentjob.h
 /usr/include/KF5/messagecore/attachmentfromurlbasejob.h
-/usr/include/KF5/messagecore/attachmentfromurljob.h
 /usr/include/KF5/messagecore/attachmentfromurlutils.h
 /usr/include/KF5/messagecore/attachmentloadjob.h
 /usr/include/KF5/messagecore/attachmentpart.h
@@ -506,6 +505,9 @@ popd
 /usr/include/KF5/messageviewer/messagepartrenderplugin.h
 /usr/include/KF5/messageviewer/messageviewer_debug.h
 /usr/include/KF5/messageviewer/messageviewer_export.h
+/usr/include/KF5/messageviewer/messageviewerconfiguresettingsplugin.h
+/usr/include/KF5/messageviewer/messageviewerconfiguresettingspluginmanager.h
+/usr/include/KF5/messageviewer/messageviewerconfiguresettingspluginwidget.h
 /usr/include/KF5/messageviewer/messageviewersettings.h
 /usr/include/KF5/messageviewer/messageviewerutil.h
 /usr/include/KF5/messageviewer/mimetype.h
@@ -531,7 +533,6 @@ popd
 /usr/include/KF5/mimetreeparser/bodypartformatterfactory.h
 /usr/include/KF5/mimetreeparser/enums.h
 /usr/include/KF5/mimetreeparser/messagepart.h
-/usr/include/KF5/mimetreeparser/mimetreeparser_debug.h
 /usr/include/KF5/mimetreeparser/mimetreeparser_export.h
 /usr/include/KF5/mimetreeparser/nodehelper.h
 /usr/include/KF5/mimetreeparser/objecttreeparser.h
@@ -633,19 +634,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.10.3
+/usr/lib64/libKF5MessageComposer.so.5.11.0
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.10.3
+/usr/lib64/libKF5MessageCore.so.5.11.0
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.10.3
+/usr/lib64/libKF5MessageList.so.5.11.0
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.10.3
+/usr/lib64/libKF5MessageViewer.so.5.11.0
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.10.3
+/usr/lib64/libKF5MimeTreeParser.so.5.11.0
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.10.3
+/usr/lib64/libKF5TemplateParser.so.5.11.0
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.10.3
+/usr/lib64/libKF5WebEngineViewer.so.5.11.0
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/messageviewer_defaultgrantleeheaderstyleplugin.so
 
