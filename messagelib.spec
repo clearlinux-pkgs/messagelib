@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 19.04.0
-Release  : 6
-URL      : https://download.kde.org/stable/applications/19.04.0/src/messagelib-19.04.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.0/src/messagelib-19.04.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.0/src/messagelib-19.04.0.tar.xz.sig
+Version  : 19.04.1
+Release  : 7
+URL      : https://download.kde.org/stable/applications/19.04.1/src/messagelib-19.04.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.1/src/messagelib-19.04.1.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.1/src/messagelib-19.04.1.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -76,6 +76,7 @@ Requires: messagelib-lib = %{version}-%{release}
 Requires: messagelib-data = %{version}-%{release}
 Provides: messagelib-devel = %{version}-%{release}
 Requires: messagelib = %{version}-%{release}
+Requires: messagelib = %{version}-%{release}
 
 %description dev
 dev components for the messagelib package.
@@ -108,22 +109,29 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-19.04.0
+%setup -q -n messagelib-19.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555719597
+export SOURCE_DATE_EPOCH=1557503972
 mkdir -p clr-build
 pushd clr-build
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555719597
+export SOURCE_DATE_EPOCH=1557503972
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp COPYING %{buildroot}/usr/share/package-licenses/messagelib/COPYING
@@ -634,19 +642,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.11.0
+/usr/lib64/libKF5MessageComposer.so.5.11.1
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.11.0
+/usr/lib64/libKF5MessageCore.so.5.11.1
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.11.0
+/usr/lib64/libKF5MessageList.so.5.11.1
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.11.0
+/usr/lib64/libKF5MessageViewer.so.5.11.1
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.11.0
+/usr/lib64/libKF5MimeTreeParser.so.5.11.1
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.11.0
+/usr/lib64/libKF5TemplateParser.so.5.11.1
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.11.0
+/usr/lib64/libKF5WebEngineViewer.so.5.11.1
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/messageviewer_defaultgrantleeheaderstyleplugin.so
 
