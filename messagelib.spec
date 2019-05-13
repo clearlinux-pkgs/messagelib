@@ -6,11 +6,11 @@
 #
 Name     : messagelib
 Version  : 19.04.1
-Release  : 7
+Release  : 9
 URL      : https://download.kde.org/stable/applications/19.04.1/src/messagelib-19.04.1.tar.xz
 Source0  : https://download.kde.org/stable/applications/19.04.1/src/messagelib-19.04.1.tar.xz
 Source99 : https://download.kde.org/stable/applications/19.04.1/src/messagelib-19.04.1.tar.xz.sig
-Summary  : KDE PIM messaging library
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: messagelib-data = %{version}-%{release}
@@ -48,6 +48,7 @@ BuildRequires : pimcommon-dev
 BuildRequires : qtbase-dev mesa-dev
 BuildRequires : qtwebengine-dev
 BuildRequires : syntax-highlighting-dev
+Patch1: CVE-2019-10732.patch
 
 %description
 What should be put here?
@@ -75,7 +76,6 @@ Group: Development
 Requires: messagelib-lib = %{version}-%{release}
 Requires: messagelib-data = %{version}-%{release}
 Provides: messagelib-devel = %{version}-%{release}
-Requires: messagelib = %{version}-%{release}
 Requires: messagelib = %{version}-%{release}
 
 %description dev
@@ -110,28 +110,29 @@ locales components for the messagelib package.
 
 %prep
 %setup -q -n messagelib-19.04.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557503972
+export SOURCE_DATE_EPOCH=1557770344
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557503972
+export SOURCE_DATE_EPOCH=1557770344
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp COPYING %{buildroot}/usr/share/package-licenses/messagelib/COPYING
