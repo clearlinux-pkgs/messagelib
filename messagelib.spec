@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 19.04.3
-Release  : 11
-URL      : https://download.kde.org/stable/applications/19.04.3/src/messagelib-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/messagelib-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/messagelib-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 12
+URL      : https://download.kde.org/stable/applications/19.08.0/src/messagelib-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/messagelib-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/messagelib-19.08.0.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -109,16 +109,17 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-19.04.3
+%setup -q -n messagelib-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1563045334
+export SOURCE_DATE_EPOCH=1565935128
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -132,7 +133,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1563045334
+export SOURCE_DATE_EPOCH=1565935128
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp COPYING %{buildroot}/usr/share/package-licenses/messagelib/COPYING
@@ -157,6 +158,7 @@ popd
 /usr/share/config.kcfg/templatesconfiguration_kfg.kcfg
 /usr/share/kconf_update/messageviewer.upd
 /usr/share/knotifications5/messageviewer.notifyrc
+/usr/share/knsrcfiles/messageviewer_header_themes.knsrc
 /usr/share/libmessageviewer/pics/enterprise_bottom.png
 /usr/share/libmessageviewer/pics/enterprise_bottom_left.png
 /usr/share/libmessageviewer/pics/enterprise_bottom_right.png
@@ -190,9 +192,8 @@ popd
 /usr/share/messageviewer/defaultthemes/5.2/style.css
 /usr/share/messageviewer/longurlServices.json
 /usr/share/org.kde.syntax-highlighting/syntax/kmail-template.xml
-/usr/share/xdg/messagelib.categories
-/usr/share/xdg/messagelib.renamecategories
-/usr/share/xdg/messageviewer_header_themes.knsrc
+/usr/share/qlogging-categories5/messagelib.categories
+/usr/share/qlogging-categories5/messagelib.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
@@ -643,19 +644,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.11.3
+/usr/lib64/libKF5MessageComposer.so.5.12.0
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.11.3
+/usr/lib64/libKF5MessageCore.so.5.12.0
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.11.3
+/usr/lib64/libKF5MessageList.so.5.12.0
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.11.3
+/usr/lib64/libKF5MessageViewer.so.5.12.0
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.11.3
+/usr/lib64/libKF5MimeTreeParser.so.5.12.0
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.11.3
+/usr/lib64/libKF5TemplateParser.so.5.12.0
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.11.3
+/usr/lib64/libKF5WebEngineViewer.so.5.12.0
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/messageviewer_defaultgrantleeheaderstyleplugin.so
 
