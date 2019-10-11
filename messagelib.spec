@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 19.08.1
-Release  : 13
-URL      : https://download.kde.org/stable/applications/19.08.1/src/messagelib-19.08.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.08.1/src/messagelib-19.08.1.tar.xz
-Source1 : https://download.kde.org/stable/applications/19.08.1/src/messagelib-19.08.1.tar.xz.sig
+Version  : 19.08.2
+Release  : 14
+URL      : https://download.kde.org/stable/applications/19.08.2/src/messagelib-19.08.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.2/src/messagelib-19.08.2.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.2/src/messagelib-19.08.2.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -109,14 +109,14 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-19.08.1
+%setup -q -n messagelib-19.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1567753554
+export SOURCE_DATE_EPOCH=1570779625
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -129,11 +129,11 @@ export FCFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fsta
 export FFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
 export CXXFLAGS="$CXXFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1567753554
+export SOURCE_DATE_EPOCH=1570779625
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp COPYING %{buildroot}/usr/share/package-licenses/messagelib/COPYING
@@ -644,19 +644,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.12.1
+/usr/lib64/libKF5MessageComposer.so.5.12.2
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.12.1
+/usr/lib64/libKF5MessageCore.so.5.12.2
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.12.1
+/usr/lib64/libKF5MessageList.so.5.12.2
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.12.1
+/usr/lib64/libKF5MessageViewer.so.5.12.2
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.12.1
+/usr/lib64/libKF5MimeTreeParser.so.5.12.2
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.12.1
+/usr/lib64/libKF5TemplateParser.so.5.12.2
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.12.1
+/usr/lib64/libKF5WebEngineViewer.so.5.12.2
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/messageviewer_defaultgrantleeheaderstyleplugin.so
 
