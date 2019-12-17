@@ -6,7 +6,7 @@
 #
 Name     : messagelib
 Version  : 19.12.0
-Release  : 17
+Release  : 18
 URL      : https://download.kde.org/stable/release-service/19.12.0/src/messagelib-19.12.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/19.12.0/src/messagelib-19.12.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/19.12.0/src/messagelib-19.12.0.tar.xz.sig
@@ -29,7 +29,7 @@ BuildRequires : git
 BuildRequires : gpgme-dev
 BuildRequires : grantlee-dev
 BuildRequires : grantleetheme-dev
-BuildRequires : kcalcore-dev
+BuildRequires : kcalendarcore-dev
 BuildRequires : kcontacts-dev
 BuildRequires : kdepim-apps-libs-dev
 BuildRequires : kidentitymanagement-dev
@@ -77,7 +77,6 @@ Requires: messagelib-lib = %{version}-%{release}
 Requires: messagelib-data = %{version}-%{release}
 Provides: messagelib-devel = %{version}-%{release}
 Requires: messagelib = %{version}-%{release}
-Requires: messagelib = %{version}-%{release}
 
 %description dev
 dev components for the messagelib package.
@@ -118,24 +117,23 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576601639
+export SOURCE_DATE_EPOCH=1576624612
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
-export FCFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
-export FFLAGS="$CFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
-export CXXFLAGS="$CXXFLAGS -O3 -fcf-protection=full -ffat-lto-objects -flto=4 -fstack-protector-strong "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576601639
+export SOURCE_DATE_EPOCH=1576624612
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp %{_builddir}/messagelib-19.12.0/COPYING %{buildroot}/usr/share/package-licenses/messagelib/6a3bf83ab62e047649bdf91a17c9311737cede0f
