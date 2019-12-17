@@ -1,4 +1,4 @@
-18.12.2
+19.12.0
 akonadi-search-dev
 kcalcore-dev
 kimap-dev
@@ -6,3 +6,4 @@ kmbox-dev
 libassuan-dev
 libgpg-error-dev
 pimcommon-dev
+qca-qt5-dev
