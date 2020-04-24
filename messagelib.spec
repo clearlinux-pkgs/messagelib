@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 19.12.3
-Release  : 22
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/messagelib-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/messagelib-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/messagelib-19.12.3.tar.xz.sig
+Version  : 20.04.0
+Release  : 23
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/messagelib-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/messagelib-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/messagelib-20.04.0.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -110,15 +110,15 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-19.12.3
-cd %{_builddir}/messagelib-19.12.3
+%setup -q -n messagelib-20.04.0
+cd %{_builddir}/messagelib-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583536054
+export SOURCE_DATE_EPOCH=1587702645
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -135,11 +135,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583536054
+export SOURCE_DATE_EPOCH=1587702645
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
-cp %{_builddir}/messagelib-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/messagelib/6a3bf83ab62e047649bdf91a17c9311737cede0f
-cp %{_builddir}/messagelib-19.12.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/messagelib/c914b1f9fc73a1ae187da32447bd161823f8b9e8
+cp %{_builddir}/messagelib-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/messagelib/6a3bf83ab62e047649bdf91a17c9311737cede0f
+cp %{_builddir}/messagelib-20.04.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/messagelib/c914b1f9fc73a1ae187da32447bd161823f8b9e8
 pushd clr-build
 %make_install
 popd
@@ -305,12 +305,16 @@ popd
 /usr/include/KF5/MessageViewer/DKIMHeaderParser
 /usr/include/KF5/MessageViewer/DKIMInfo
 /usr/include/KF5/MessageViewer/DKIMKeyRecord
+/usr/include/KF5/MessageViewer/DKIMManageRulesDialog
+/usr/include/KF5/MessageViewer/DKIMManageRulesWidget
 /usr/include/KF5/MessageViewer/DKIMManager
+/usr/include/KF5/MessageViewer/DKIMManagerAuthenticationServer
 /usr/include/KF5/MessageViewer/DKIMManagerKey
 /usr/include/KF5/MessageViewer/DKIMManagerKeyDialog
 /usr/include/KF5/MessageViewer/DKIMManagerKeyWidget
 /usr/include/KF5/MessageViewer/DKIMManagerRules
 /usr/include/KF5/MessageViewer/DKIMRule
+/usr/include/KF5/MessageViewer/DKIMViewerMenu
 /usr/include/KF5/MessageViewer/DKIMWidgetInfo
 /usr/include/KF5/MessageViewer/EditorWatcher
 /usr/include/KF5/MessageViewer/FileHtmlWriter
@@ -399,6 +403,7 @@ popd
 /usr/include/KF5/WebEngineViewer/UpdateDataBaseInfo
 /usr/include/KF5/WebEngineViewer/WebEngineAccessKey
 /usr/include/KF5/WebEngineViewer/WebEngineExportHtmlPageJob
+/usr/include/KF5/WebEngineViewer/WebEngineExportPdfPageJob
 /usr/include/KF5/WebEngineViewer/WebEngineManageScript
 /usr/include/KF5/WebEngineViewer/WebEnginePage
 /usr/include/KF5/WebEngineViewer/WebEngineScript
@@ -524,11 +529,15 @@ popd
 /usr/include/KF5/messageviewer/dkiminfo.h
 /usr/include/KF5/messageviewer/dkimkeyrecord.h
 /usr/include/KF5/messageviewer/dkimmanager.h
+/usr/include/KF5/messageviewer/dkimmanagerauthenticationserver.h
 /usr/include/KF5/messageviewer/dkimmanagerkey.h
 /usr/include/KF5/messageviewer/dkimmanagerkeydialog.h
 /usr/include/KF5/messageviewer/dkimmanagerkeywidget.h
 /usr/include/KF5/messageviewer/dkimmanagerrules.h
+/usr/include/KF5/messageviewer/dkimmanagerulesdialog.h
+/usr/include/KF5/messageviewer/dkimmanageruleswidget.h
 /usr/include/KF5/messageviewer/dkimrule.h
+/usr/include/KF5/messageviewer/dkimviewermenu.h
 /usr/include/KF5/messageviewer/dkimwidgetinfo.h
 /usr/include/KF5/messageviewer/editorwatcher.h
 /usr/include/KF5/messageviewer/filehtmlwriter.h
@@ -629,6 +638,7 @@ popd
 /usr/include/KF5/webengineviewer/updatedatabaseinfo.h
 /usr/include/KF5/webengineviewer/webengineaccesskey.h
 /usr/include/KF5/webengineviewer/webengineexporthtmlpagejob.h
+/usr/include/KF5/webengineviewer/webengineexportpdfpagejob.h
 /usr/include/KF5/webengineviewer/webenginemanagescript.h
 /usr/include/KF5/webengineviewer/webenginepage.h
 /usr/include/KF5/webengineviewer/webenginescript.h
@@ -683,21 +693,21 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.13.3
+/usr/lib64/libKF5MessageComposer.so.5.14.0
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.13.3
+/usr/lib64/libKF5MessageCore.so.5.14.0
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.13.3
+/usr/lib64/libKF5MessageList.so.5.14.0
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.13.3
+/usr/lib64/libKF5MessageViewer.so.5.14.0
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.13.3
+/usr/lib64/libKF5MimeTreeParser.so.5.14.0
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.13.3
+/usr/lib64/libKF5TemplateParser.so.5.14.0
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.13.3
+/usr/lib64/libKF5WebEngineViewer.so.5.14.0
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
-/usr/lib64/qt5/plugins/messageviewer/messageviewer_defaultgrantleeheaderstyleplugin.so
+/usr/lib64/qt5/plugins/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
 
 %files license
 %defattr(0644,root,root,0755)
