@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 20.04.2
-Release  : 27
-URL      : https://download.kde.org/stable/release-service/20.04.2/src/messagelib-20.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.2/src/messagelib-20.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.2/src/messagelib-20.04.2.tar.xz.sig
+Version  : 20.08.0
+Release  : 28
+URL      : https://download.kde.org/stable/release-service/20.08.0/src/messagelib-20.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.0/src/messagelib-20.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.0/src/messagelib-20.08.0.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : BSD-3-Clause BSL-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
 Requires: messagelib-data = %{version}-%{release}
 Requires: messagelib-lib = %{version}-%{release}
 Requires: messagelib-license = %{version}-%{release}
@@ -28,6 +28,7 @@ BuildRequires : extra-cmake-modules
 BuildRequires : extra-cmake-modules-data
 BuildRequires : git
 BuildRequires : gpgme-dev
+BuildRequires : gpgme-dev gpgme-extras
 BuildRequires : grantlee-dev
 BuildRequires : grantleetheme-dev
 BuildRequires : karchive-dev
@@ -127,15 +128,15 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-20.04.2
-cd %{_builddir}/messagelib-20.04.2
+%setup -q -n messagelib-20.08.0
+cd %{_builddir}/messagelib-20.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591933369
+export SOURCE_DATE_EPOCH=1597768092
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -147,15 +148,25 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -mzero-caller-saved-regs=used "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591933369
+export SOURCE_DATE_EPOCH=1597768092
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
-cp %{_builddir}/messagelib-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/messagelib/6a3bf83ab62e047649bdf91a17c9311737cede0f
-cp %{_builddir}/messagelib-20.04.2/COPYING.LIB %{buildroot}/usr/share/package-licenses/messagelib/c914b1f9fc73a1ae187da32447bd161823f8b9e8
+cp %{_builddir}/messagelib-20.08.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/messagelib/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/messagelib-20.08.0/LICENSES/BSL-1.0.txt %{buildroot}/usr/share/package-licenses/messagelib/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+cp %{_builddir}/messagelib-20.08.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/messagelib-20.08.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/messagelib-20.08.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/messagelib-20.08.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/messagelib-20.08.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/messagelib-20.08.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/messagelib-20.08.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/messagelib-20.08.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/messagelib-20.08.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/messagelib-20.08.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -235,6 +246,7 @@ popd
 /usr/include/KF5/MessageComposer/ConvertSnippetVariablesUtil
 /usr/include/KF5/MessageComposer/EncryptJob
 /usr/include/KF5/MessageComposer/FollowUpReminderSelectDateDialog
+/usr/include/KF5/MessageComposer/FollowupReminder
 /usr/include/KF5/MessageComposer/FollowupReminderCreateJob
 /usr/include/KF5/MessageComposer/GlobalPart
 /usr/include/KF5/MessageComposer/ImageScalingWidget
@@ -276,6 +288,13 @@ popd
 /usr/include/KF5/MessageComposer/RecipientsEditor
 /usr/include/KF5/MessageComposer/RichTextComposerNg
 /usr/include/KF5/MessageComposer/RichTextComposerSignatures
+/usr/include/KF5/MessageComposer/SendLaterCreateJob
+/usr/include/KF5/MessageComposer/SendLaterDialog
+/usr/include/KF5/MessageComposer/SendLaterInfo
+/usr/include/KF5/MessageComposer/SendLaterJob
+/usr/include/KF5/MessageComposer/SendLaterRemoveJob
+/usr/include/KF5/MessageComposer/SendLaterUtil
+/usr/include/KF5/MessageComposer/SignEncryptJob
 /usr/include/KF5/MessageComposer/SignJob
 /usr/include/KF5/MessageComposer/SignatureController
 /usr/include/KF5/MessageComposer/SinglepartJob
@@ -446,6 +465,7 @@ popd
 /usr/include/KF5/messagecomposer/convertsnippetvariablesjob.h
 /usr/include/KF5/messagecomposer/convertsnippetvariablesutil.h
 /usr/include/KF5/messagecomposer/encryptjob.h
+/usr/include/KF5/messagecomposer/followupreminder.h
 /usr/include/KF5/messagecomposer/followupremindercreatejob.h
 /usr/include/KF5/messagecomposer/followupreminderselectdatedialog.h
 /usr/include/KF5/messagecomposer/globalpart.h
@@ -491,7 +511,14 @@ popd
 /usr/include/KF5/messagecomposer/recipientseditor.h
 /usr/include/KF5/messagecomposer/richtextcomposerng.h
 /usr/include/KF5/messagecomposer/richtextcomposersignatures.h
+/usr/include/KF5/messagecomposer/sendlatercreatejob.h
+/usr/include/KF5/messagecomposer/sendlaterdialog.h
+/usr/include/KF5/messagecomposer/sendlaterinfo.h
+/usr/include/KF5/messagecomposer/sendlaterjob.h
+/usr/include/KF5/messagecomposer/sendlaterremovejob.h
+/usr/include/KF5/messagecomposer/sendlaterutil.h
 /usr/include/KF5/messagecomposer/signaturecontroller.h
+/usr/include/KF5/messagecomposer/signencryptjob.h
 /usr/include/KF5/messagecomposer/signjob.h
 /usr/include/KF5/messagecomposer/singlepartjob.h
 /usr/include/KF5/messagecomposer/skeletonmessagejob.h
@@ -709,26 +736,33 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.14.2
+/usr/lib64/libKF5MessageComposer.so.5.15.0
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.14.2
+/usr/lib64/libKF5MessageCore.so.5.15.0
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.14.2
+/usr/lib64/libKF5MessageList.so.5.15.0
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.14.2
+/usr/lib64/libKF5MessageViewer.so.5.15.0
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.14.2
+/usr/lib64/libKF5MimeTreeParser.so.5.15.0
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.14.2
+/usr/lib64/libKF5TemplateParser.so.5.15.0
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.14.2
+/usr/lib64/libKF5WebEngineViewer.so.5.15.0
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/messagelib/6a3bf83ab62e047649bdf91a17c9311737cede0f
-/usr/share/package-licenses/messagelib/c914b1f9fc73a1ae187da32447bd161823f8b9e8
+/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
+/usr/share/package-licenses/messagelib/2a638514c87c4923c0570c55822620fad56f2a33
+/usr/share/package-licenses/messagelib/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+/usr/share/package-licenses/messagelib/6091db0aead0d90182b93d3c0d09ba93d188f907
+/usr/share/package-licenses/messagelib/6f1f675aa5f6a2bbaa573b8343044b166be28399
+/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
+/usr/share/package-licenses/messagelib/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
+/usr/share/package-licenses/messagelib/e712eadfab0d2357c0f50f599ef35ee0d87534cb
 
 %files locales -f libmessagecomposer.lang -f libmessagecore.lang -f libmessagelist.lang -f libmessageviewer.lang -f libmimetreeparser.lang -f libtemplateparser.lang -f libwebengineviewer.lang
 %defattr(-,root,root,-)
