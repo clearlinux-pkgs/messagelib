@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : messagelib
-Version  : 20.08.3
-Release  : 30
-URL      : https://download.kde.org/stable/release-service/20.08.3/src/messagelib-20.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.08.3/src/messagelib-20.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.08.3/src/messagelib-20.08.3.tar.xz.sig
+Version  : 20.12.0
+Release  : 31
+URL      : https://download.kde.org/stable/release-service/20.12.0/src/messagelib-20.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.12.0/src/messagelib-20.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.12.0/src/messagelib-20.12.0.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : BSD-3-Clause BSL-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -40,6 +40,7 @@ BuildRequires : kconfigwidgets-dev
 BuildRequires : kcontacts-dev
 BuildRequires : kdbusaddons-dev
 BuildRequires : kdepim-apps-libs-dev
+BuildRequires : kguiaddons-dev
 BuildRequires : ki18n-dev
 BuildRequires : kiconthemes-dev
 BuildRequires : kidentitymanagement-dev
@@ -128,15 +129,15 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-20.08.3
-cd %{_builddir}/messagelib-20.08.3
+%setup -q -n messagelib-20.12.0
+cd %{_builddir}/messagelib-20.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1604621136
+export SOURCE_DATE_EPOCH=1607915787
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -152,21 +153,21 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1604621136
+export SOURCE_DATE_EPOCH=1607915787
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
-cp %{_builddir}/messagelib-20.08.3/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/messagelib/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/messagelib-20.08.3/LICENSES/BSL-1.0.txt %{buildroot}/usr/share/package-licenses/messagelib/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
-cp %{_builddir}/messagelib-20.08.3/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/messagelib-20.08.3/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/messagelib-20.08.3/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/messagelib-20.08.3/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/messagelib-20.08.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/messagelib-20.08.3/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/messagelib-20.08.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/messagelib-20.08.3/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/messagelib-20.08.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/messagelib-20.08.3/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/messagelib-20.12.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/messagelib/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/messagelib-20.12.0/LICENSES/BSL-1.0.txt %{buildroot}/usr/share/package-licenses/messagelib/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+cp %{_builddir}/messagelib-20.12.0/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/messagelib-20.12.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/messagelib-20.12.0/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/messagelib-20.12.0/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/messagelib-20.12.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/messagelib-20.12.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/messagelib-20.12.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/messagelib-20.12.0/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/messagelib-20.12.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/messagelib-20.12.0/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
 pushd clr-build
 %make_install
 popd
@@ -283,6 +284,7 @@ popd
 /usr/include/KF5/MessageComposer/PluginEditorInitManager
 /usr/include/KF5/MessageComposer/PluginEditorInterface
 /usr/include/KF5/MessageComposer/PluginEditorManager
+/usr/include/KF5/MessageComposer/ProtectedHeadersJob
 /usr/include/KF5/MessageComposer/Recipient
 /usr/include/KF5/MessageComposer/RecipientLine
 /usr/include/KF5/MessageComposer/RecipientsEditor
@@ -446,6 +448,7 @@ popd
 /usr/include/KF5/WebEngineViewer/WebHitTest
 /usr/include/KF5/WebEngineViewer/WebHitTestResult
 /usr/include/KF5/WebEngineViewer/ZoomActionMenu
+/usr/include/KF5/messagecomposer/
 /usr/include/KF5/messagecomposer/abstractencryptjob.h
 /usr/include/KF5/messagecomposer/akonadisender.h
 /usr/include/KF5/messagecomposer/aliasesexpandjob.h
@@ -506,6 +509,7 @@ popd
 /usr/include/KF5/messagecomposer/plugineditorinitmanager.h
 /usr/include/KF5/messagecomposer/plugineditorinterface.h
 /usr/include/KF5/messagecomposer/plugineditormanager.h
+/usr/include/KF5/messagecomposer/protectedheadersjob.h
 /usr/include/KF5/messagecomposer/recipient.h
 /usr/include/KF5/messagecomposer/recipientline.h
 /usr/include/KF5/messagecomposer/recipientseditor.h
@@ -736,19 +740,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.15.3
+/usr/lib64/libKF5MessageComposer.so.5.16.0
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.15.3
+/usr/lib64/libKF5MessageCore.so.5.16.0
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.15.3
+/usr/lib64/libKF5MessageList.so.5.16.0
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.15.3
+/usr/lib64/libKF5MessageViewer.so.5.16.0
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.15.3
+/usr/lib64/libKF5MimeTreeParser.so.5.16.0
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.15.3
+/usr/lib64/libKF5TemplateParser.so.5.16.0
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.15.3
+/usr/lib64/libKF5WebEngineViewer.so.5.16.0
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
 
