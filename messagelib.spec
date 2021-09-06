@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : messagelib
-Version  : 21.04.2
-Release  : 37
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/messagelib-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/messagelib-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/messagelib-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 38
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/messagelib-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/messagelib-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/messagelib-21.08.1.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : BSD-3-Clause BSL-1.0 CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -128,48 +128,48 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-21.04.2
-cd %{_builddir}/messagelib-21.04.2
+%setup -q -n messagelib-21.08.1
+cd %{_builddir}/messagelib-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623358042
+export SOURCE_DATE_EPOCH=1630970711
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto -fstack-protector-strong -fzero-call-used-regs=used "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623358042
+export SOURCE_DATE_EPOCH=1630970711
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
-cp %{_builddir}/messagelib-21.04.2/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/messagelib/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/messagelib-21.04.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/messagelib/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/messagelib-21.04.2/LICENSES/BSL-1.0.txt %{buildroot}/usr/share/package-licenses/messagelib/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
-cp %{_builddir}/messagelib-21.04.2/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/messagelib/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/messagelib-21.04.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/2a638514c87c4923c0570c55822620fad56f2a33
-cp %{_builddir}/messagelib-21.04.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/e712eadfab0d2357c0f50f599ef35ee0d87534cb
-cp %{_builddir}/messagelib-21.04.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/6091db0aead0d90182b93d3c0d09ba93d188f907
-cp %{_builddir}/messagelib-21.04.2/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/messagelib-21.04.2/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/messagelib-21.04.2/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/messagelib-21.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/messagelib-21.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/messagelib-21.04.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/messagelib-21.04.2/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
-cp %{_builddir}/messagelib-21.04.2/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/messagelib/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/messagelib-21.08.1/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/messagelib/29fb05b49e12a380545499938c4879440bd8851e
+cp %{_builddir}/messagelib-21.08.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/messagelib/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/messagelib-21.08.1/LICENSES/BSL-1.0.txt %{buildroot}/usr/share/package-licenses/messagelib/3cba29011be2b9d59f6204d6fa0a386b1b2dbd90
+cp %{_builddir}/messagelib-21.08.1/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/messagelib/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/messagelib-21.08.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/2a638514c87c4923c0570c55822620fad56f2a33
+cp %{_builddir}/messagelib-21.08.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/e712eadfab0d2357c0f50f599ef35ee0d87534cb
+cp %{_builddir}/messagelib-21.08.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/6091db0aead0d90182b93d3c0d09ba93d188f907
+cp %{_builddir}/messagelib-21.08.1/LICENSES/LGPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/messagelib-21.08.1/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/messagelib-21.08.1/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/messagelib/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/messagelib-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/messagelib-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/messagelib/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/messagelib-21.08.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/messagelib-21.08.1/LICENSES/LicenseRef-KDE-Accepted-LGPL.txt %{buildroot}/usr/share/package-licenses/messagelib/e458941548e0864907e654fa2e192844ae90fc32
+cp %{_builddir}/messagelib-21.08.1/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/messagelib/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -270,12 +270,11 @@ popd
 /usr/include/KF5/MessageComposer/PluginEditor
 /usr/include/KF5/MessageComposer/PluginEditorBase
 /usr/include/KF5/MessageComposer/PluginEditorCheckBeforeSend
-/usr/include/KF5/MessageComposer/PluginEditorCheckBeforeSendConfigureWidget
 /usr/include/KF5/MessageComposer/PluginEditorCheckBeforeSendInterface
 /usr/include/KF5/MessageComposer/PluginEditorCheckBeforeSendManager
 /usr/include/KF5/MessageComposer/PluginEditorCheckBeforeSendParams
+/usr/include/KF5/MessageComposer/PluginEditorConfigureBaseWidget
 /usr/include/KF5/MessageComposer/PluginEditorConvertText
-/usr/include/KF5/MessageComposer/PluginEditorConvertTextConfigureWidget
 /usr/include/KF5/MessageComposer/PluginEditorConvertTextInterface
 /usr/include/KF5/MessageComposer/PluginEditorConvertTextManager
 /usr/include/KF5/MessageComposer/PluginEditorConverterBeforeConvertingData
@@ -283,7 +282,6 @@ popd
 /usr/include/KF5/MessageComposer/PluginEditorGrammarCustomToolsViewInterface
 /usr/include/KF5/MessageComposer/PluginEditorGrammarManager
 /usr/include/KF5/MessageComposer/PluginEditorInit
-/usr/include/KF5/MessageComposer/PluginEditorInitConfigureWidget
 /usr/include/KF5/MessageComposer/PluginEditorInitInterface
 /usr/include/KF5/MessageComposer/PluginEditorInitManager
 /usr/include/KF5/MessageComposer/PluginEditorInterface
@@ -339,7 +337,6 @@ popd
 /usr/include/KF5/MessageList/View
 /usr/include/KF5/MessageList/WidgetBase
 /usr/include/KF5/MessageViewer/AttachmentStrategy
-/usr/include/KF5/MessageViewer/BlockMailTrackingUrlInterceptor
 /usr/include/KF5/MessageViewer/BodyPartURLHandler
 /usr/include/KF5/MessageViewer/BufferedHtmlWriter
 /usr/include/KF5/MessageViewer/CSSHelper
@@ -383,6 +380,11 @@ popd
 /usr/include/KF5/MessageViewer/MessagePartRenderPlugin
 /usr/include/KF5/MessageViewer/MessagePartRendererBase
 /usr/include/KF5/MessageViewer/MessagePartRendererManager
+/usr/include/KF5/MessageViewer/MessageViewerCheckBeforeDeletingInterface
+/usr/include/KF5/MessageViewer/MessageViewerCheckBeforeDeletingParameters
+/usr/include/KF5/MessageViewer/MessageViewerCheckBeforeDeletingPlugin
+/usr/include/KF5/MessageViewer/MessageViewerCheckBeforeDeletingPluginManager
+/usr/include/KF5/MessageViewer/MessageViewerCheckBeforeDeletingPluginWidget
 /usr/include/KF5/MessageViewer/MessageViewerConfigureSettingsPlugin
 /usr/include/KF5/MessageViewer/MessageViewerConfigureSettingsPluginManager
 /usr/include/KF5/MessageViewer/MessageViewerConfigureSettingsPluginWidget
@@ -432,14 +434,18 @@ popd
 /usr/include/KF5/TemplateParser/TemplatesInsertCommandPushButton
 /usr/include/KF5/TemplateParser/TemplatesTextEdit
 /usr/include/KF5/TemplateParser/TemplatesUtil
+/usr/include/KF5/WebEngineViewer/BlockExternalResourcesUrlInterceptor
+/usr/include/KF5/WebEngineViewer/BlockTrackingUrlInterceptor
 /usr/include/KF5/WebEngineViewer/CheckPhishingUrlCache
 /usr/include/KF5/WebEngineViewer/CheckPhishingUrlJob
 /usr/include/KF5/WebEngineViewer/CheckPhishingUrlUtil
 /usr/include/KF5/WebEngineViewer/CreatePhishingUrlDataBaseJob
+/usr/include/KF5/WebEngineViewer/DeveloperToolDialog
 /usr/include/KF5/WebEngineViewer/FindBarBase
 /usr/include/KF5/WebEngineViewer/FindBarWebEngineView
 /usr/include/KF5/WebEngineViewer/HashCacheManager
 /usr/include/KF5/WebEngineViewer/InterceptorManager
+/usr/include/KF5/WebEngineViewer/LoadExternalReferencesUrlInterceptor
 /usr/include/KF5/WebEngineViewer/LocalDataBaseManager
 /usr/include/KF5/WebEngineViewer/NetworkPluginUrlInterceptor
 /usr/include/KF5/WebEngineViewer/NetworkPluginUrlInterceptorConfigureWidget
@@ -447,6 +453,8 @@ popd
 /usr/include/KF5/WebEngineViewer/NetworkUrlInterceptor
 /usr/include/KF5/WebEngineViewer/NetworkUrlInterceptorPluginManager
 /usr/include/KF5/WebEngineViewer/SearchFullHashJob
+/usr/include/KF5/WebEngineViewer/SubmittedFormWarningWidget
+/usr/include/KF5/WebEngineViewer/TrackingWarningWidget
 /usr/include/KF5/WebEngineViewer/UpdateDataBaseInfo
 /usr/include/KF5/WebEngineViewer/WebEngineAccessKey
 /usr/include/KF5/WebEngineViewer/WebEngineExportHtmlPageJob
@@ -502,20 +510,18 @@ popd
 /usr/include/KF5/messagecomposer/plugineditor.h
 /usr/include/KF5/messagecomposer/plugineditorbase.h
 /usr/include/KF5/messagecomposer/plugineditorcheckbeforesend.h
-/usr/include/KF5/messagecomposer/plugineditorcheckbeforesendconfigurewidget.h
 /usr/include/KF5/messagecomposer/plugineditorcheckbeforesendinterface.h
 /usr/include/KF5/messagecomposer/plugineditorcheckbeforesendmanager.h
 /usr/include/KF5/messagecomposer/plugineditorcheckbeforesendparams.h
+/usr/include/KF5/messagecomposer/plugineditorconfigurebasewidget.h
 /usr/include/KF5/messagecomposer/plugineditorconverterbeforeconvertingdata.h
 /usr/include/KF5/messagecomposer/plugineditorconverterinitialdata.h
 /usr/include/KF5/messagecomposer/plugineditorconverttext.h
-/usr/include/KF5/messagecomposer/plugineditorconverttextconfigurewidget.h
 /usr/include/KF5/messagecomposer/plugineditorconverttextinterface.h
 /usr/include/KF5/messagecomposer/plugineditorconverttextmanager.h
 /usr/include/KF5/messagecomposer/plugineditorgrammarcustomtoolsviewinterface.h
 /usr/include/KF5/messagecomposer/plugineditorgrammarmanager.h
 /usr/include/KF5/messagecomposer/plugineditorinit.h
-/usr/include/KF5/messagecomposer/plugineditorinitconfigurewidget.h
 /usr/include/KF5/messagecomposer/plugineditorinitinterface.h
 /usr/include/KF5/messagecomposer/plugineditorinitmanager.h
 /usr/include/KF5/messagecomposer/plugineditorinterface.h
@@ -578,7 +584,6 @@ popd
 /usr/include/KF5/messagelist/widgetbase.h
 /usr/include/KF5/messagelist_version.h
 /usr/include/KF5/messageviewer/attachmentstrategy.h
-/usr/include/KF5/messageviewer/blockmailtrackingurlinterceptor.h
 /usr/include/KF5/messageviewer/bodyparturlhandler.h
 /usr/include/KF5/messageviewer/bufferedhtmlwriter.h
 /usr/include/KF5/messageviewer/config-messageviewer.h
@@ -626,6 +631,11 @@ popd
 /usr/include/KF5/messageviewer/messagepartrenderplugin.h
 /usr/include/KF5/messageviewer/messageviewer_debug.h
 /usr/include/KF5/messageviewer/messageviewer_export.h
+/usr/include/KF5/messageviewer/messageviewercheckbeforedeletinginterface.h
+/usr/include/KF5/messageviewer/messageviewercheckbeforedeletingparameters.h
+/usr/include/KF5/messageviewer/messageviewercheckbeforedeletingplugin.h
+/usr/include/KF5/messageviewer/messageviewercheckbeforedeletingpluginmanager.h
+/usr/include/KF5/messageviewer/messageviewercheckbeforedeletingpluginwidget.h
 /usr/include/KF5/messageviewer/messageviewerconfiguresettingsplugin.h
 /usr/include/KF5/messageviewer/messageviewerconfiguresettingspluginmanager.h
 /usr/include/KF5/messageviewer/messageviewerconfiguresettingspluginwidget.h
@@ -684,14 +694,18 @@ popd
 /usr/include/KF5/templateparser/templatesutil.h
 /usr/include/KF5/templateparser/ui_templatesconfiguration_base.h
 /usr/include/KF5/templateparser_version.h
+/usr/include/KF5/webengineviewer/blockexternalresourcesurlinterceptor.h
+/usr/include/KF5/webengineviewer/blocktrackingurlinterceptor.h
 /usr/include/KF5/webengineviewer/checkphishingurlcache.h
 /usr/include/KF5/webengineviewer/checkphishingurljob.h
 /usr/include/KF5/webengineviewer/checkphishingurlutil.h
 /usr/include/KF5/webengineviewer/createphishingurldatabasejob.h
+/usr/include/KF5/webengineviewer/developertooldialog.h
 /usr/include/KF5/webengineviewer/findbarbase.h
 /usr/include/KF5/webengineviewer/findbarwebengineview.h
 /usr/include/KF5/webengineviewer/hashcachemanager.h
 /usr/include/KF5/webengineviewer/interceptormanager.h
+/usr/include/KF5/webengineviewer/loadexternalreferencesurlinterceptor.h
 /usr/include/KF5/webengineviewer/localdatabasemanager.h
 /usr/include/KF5/webengineviewer/networkpluginurlinterceptor.h
 /usr/include/KF5/webengineviewer/networkpluginurlinterceptorconfigurewidget.h
@@ -699,6 +713,8 @@ popd
 /usr/include/KF5/webengineviewer/networkurlinterceptor.h
 /usr/include/KF5/webengineviewer/networkurlinterceptorpluginmanager.h
 /usr/include/KF5/webengineviewer/searchfullhashjob.h
+/usr/include/KF5/webengineviewer/submittedformwarningwidget.h
+/usr/include/KF5/webengineviewer/trackingwarningwidget.h
 /usr/include/KF5/webengineviewer/updatedatabaseinfo.h
 /usr/include/KF5/webengineviewer/webengineaccesskey.h
 /usr/include/KF5/webengineviewer/webengineexporthtmlpagejob.h
@@ -757,19 +773,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.17.2
+/usr/lib64/libKF5MessageComposer.so.5.18.1
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.17.2
+/usr/lib64/libKF5MessageCore.so.5.18.1
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.17.2
+/usr/lib64/libKF5MessageList.so.5.18.1
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.17.2
+/usr/lib64/libKF5MessageViewer.so.5.18.1
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.17.2
+/usr/lib64/libKF5MimeTreeParser.so.5.18.1
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.17.2
+/usr/lib64/libKF5TemplateParser.so.5.18.1
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.17.2
+/usr/lib64/libKF5WebEngineViewer.so.5.18.1
 /usr/lib64/qt5/plugins/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
 
