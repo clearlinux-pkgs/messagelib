@@ -6,7 +6,7 @@
 #
 Name     : messagelib
 Version  : 21.08.2
-Release  : 39
+Release  : 40
 URL      : https://download.kde.org/stable/release-service/21.08.2/src/messagelib-21.08.2.tar.xz
 Source0  : https://download.kde.org/stable/release-service/21.08.2/src/messagelib-21.08.2.tar.xz
 Source1  : https://download.kde.org/stable/release-service/21.08.2/src/messagelib-21.08.2.tar.xz.sig
