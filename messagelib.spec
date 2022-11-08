@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : messagelib
-Version  : 22.08.2
-Release  : 54
-URL      : https://download.kde.org/stable/release-service/22.08.2/src/messagelib-22.08.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.2/src/messagelib-22.08.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.2/src/messagelib-22.08.2.tar.xz.sig
+Version  : 22.08.3
+Release  : 55
+URL      : https://download.kde.org/stable/release-service/22.08.3/src/messagelib-22.08.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.08.3/src/messagelib-22.08.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.08.3/src/messagelib-22.08.3.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : BSD-3-Clause BSL-1.0 CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -130,15 +130,15 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-22.08.2
-cd %{_builddir}/messagelib-22.08.2
+%setup -q -n messagelib-22.08.3
+cd %{_builddir}/messagelib-22.08.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1665776719
+export SOURCE_DATE_EPOCH=1667928908
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -154,7 +154,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1665776719
+export SOURCE_DATE_EPOCH=1667928908
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp %{_builddir}/messagelib-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/messagelib/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -807,19 +807,19 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5MessageComposer.so.5
-/usr/lib64/libKF5MessageComposer.so.5.21.2
+/usr/lib64/libKF5MessageComposer.so.5.21.3
 /usr/lib64/libKF5MessageCore.so.5
-/usr/lib64/libKF5MessageCore.so.5.21.2
+/usr/lib64/libKF5MessageCore.so.5.21.3
 /usr/lib64/libKF5MessageList.so.5
-/usr/lib64/libKF5MessageList.so.5.21.2
+/usr/lib64/libKF5MessageList.so.5.21.3
 /usr/lib64/libKF5MessageViewer.so.5
-/usr/lib64/libKF5MessageViewer.so.5.21.2
+/usr/lib64/libKF5MessageViewer.so.5.21.3
 /usr/lib64/libKF5MimeTreeParser.so.5
-/usr/lib64/libKF5MimeTreeParser.so.5.21.2
+/usr/lib64/libKF5MimeTreeParser.so.5.21.3
 /usr/lib64/libKF5TemplateParser.so.5
-/usr/lib64/libKF5TemplateParser.so.5.21.2
+/usr/lib64/libKF5TemplateParser.so.5.21.3
 /usr/lib64/libKF5WebEngineViewer.so.5
-/usr/lib64/libKF5WebEngineViewer.so.5.21.2
+/usr/lib64/libKF5WebEngineViewer.so.5.21.3
 /usr/lib64/qt5/plugins/pim5/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/pim5/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
 
