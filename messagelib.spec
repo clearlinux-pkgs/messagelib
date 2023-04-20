@@ -6,7 +6,7 @@
 #
 Name     : messagelib
 Version  : 22.12.3
-Release  : 60
+Release  : 61
 URL      : https://download.kde.org/stable/release-service/22.12.3/src/messagelib-22.12.3.tar.xz
 Source0  : https://download.kde.org/stable/release-service/22.12.3/src/messagelib-22.12.3.tar.xz
 Source1  : https://download.kde.org/stable/release-service/22.12.3/src/messagelib-22.12.3.tar.xz.sig
