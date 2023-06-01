@@ -7,7 +7,7 @@
 #
 Name     : messagelib
 Version  : 23.04.1
-Release  : 66
+Release  : 67
 URL      : https://download.kde.org/stable/release-service/23.04.1/src/messagelib-23.04.1.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.1/src/messagelib-23.04.1.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.1/src/messagelib-23.04.1.tar.xz.sig
@@ -124,7 +124,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684872148
+export SOURCE_DATE_EPOCH=1685596248
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -157,7 +157,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684872148
+export SOURCE_DATE_EPOCH=1685596248
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp %{_builddir}/messagelib-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/messagelib/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -249,13 +249,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5MessageComposer.so
-/V3/usr/lib64/libKPim5MessageCore.so
-/V3/usr/lib64/libKPim5MessageList.so
-/V3/usr/lib64/libKPim5MessageViewer.so
-/V3/usr/lib64/libKPim5MimeTreeParser.so
-/V3/usr/lib64/libKPim5TemplateParser.so
-/V3/usr/lib64/libKPim5WebEngineViewer.so
 /usr/include/KPim5/MessageComposer/MessageComposer/AbstractEncryptJob
 /usr/include/KPim5/MessageComposer/MessageComposer/AkonadiSender
 /usr/include/KPim5/MessageComposer/MessageComposer/AliasesExpandJob
@@ -824,19 +817,12 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5MessageComposer.so.5
 /V3/usr/lib64/libKPim5MessageComposer.so.5.23.1
-/V3/usr/lib64/libKPim5MessageCore.so.5
 /V3/usr/lib64/libKPim5MessageCore.so.5.23.1
-/V3/usr/lib64/libKPim5MessageList.so.5
 /V3/usr/lib64/libKPim5MessageList.so.5.23.1
-/V3/usr/lib64/libKPim5MessageViewer.so.5
 /V3/usr/lib64/libKPim5MessageViewer.so.5.23.1
-/V3/usr/lib64/libKPim5MimeTreeParser.so.5
 /V3/usr/lib64/libKPim5MimeTreeParser.so.5.23.1
-/V3/usr/lib64/libKPim5TemplateParser.so.5
 /V3/usr/lib64/libKPim5TemplateParser.so.5.23.1
-/V3/usr/lib64/libKPim5WebEngineViewer.so.5
 /V3/usr/lib64/libKPim5WebEngineViewer.so.5.23.1
 /V3/usr/lib64/qt5/plugins/pim5/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /V3/usr/lib64/qt5/plugins/pim5/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
