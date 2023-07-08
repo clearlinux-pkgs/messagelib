@@ -7,7 +7,7 @@
 #
 Name     : messagelib
 Version  : 23.04.2
-Release  : 70
+Release  : 71
 URL      : https://download.kde.org/stable/release-service/23.04.2/src/messagelib-23.04.2.tar.xz
 Source0  : https://download.kde.org/stable/release-service/23.04.2/src/messagelib-23.04.2.tar.xz
 Source1  : https://download.kde.org/stable/release-service/23.04.2/src/messagelib-23.04.2.tar.xz.sig
