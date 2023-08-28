@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : messagelib
-Version  : 23.04.3
-Release  : 75
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/messagelib-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/messagelib-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/messagelib-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 76
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/messagelib-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/messagelib-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/messagelib-23.08.0.tar.xz.sig
 Summary  : KDE PIM messaging library
 Group    : Development/Tools
 License  : BSD-3-Clause BSL-1.0 CC0-1.0 GPL-2.0 GPL-3.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -116,15 +116,15 @@ locales components for the messagelib package.
 
 
 %prep
-%setup -q -n messagelib-23.04.3
-cd %{_builddir}/messagelib-23.04.3
+%setup -q -n messagelib-23.08.0
+cd %{_builddir}/messagelib-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688882091
+export SOURCE_DATE_EPOCH=1693235483
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -157,7 +157,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688882091
+export SOURCE_DATE_EPOCH=1693235483
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/messagelib
 cp %{_builddir}/messagelib-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/messagelib/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -270,6 +270,7 @@ popd
 /usr/include/KPim5/MessageComposer/MessageComposer/ConvertSnippetVariablesJob
 /usr/include/KPim5/MessageComposer/MessageComposer/ConvertSnippetVariablesUtil
 /usr/include/KPim5/MessageComposer/MessageComposer/DraftStatus
+/usr/include/KPim5/MessageComposer/MessageComposer/EditorWatcher
 /usr/include/KPim5/MessageComposer/MessageComposer/EncryptJob
 /usr/include/KPim5/MessageComposer/MessageComposer/FollowUpReminderSelectDateDialog
 /usr/include/KPim5/MessageComposer/MessageComposer/FollowupReminder
@@ -278,7 +279,10 @@ popd
 /usr/include/KPim5/MessageComposer/MessageComposer/ImageScalingWidget
 /usr/include/KPim5/MessageComposer/MessageComposer/InfoPart
 /usr/include/KPim5/MessageComposer/MessageComposer/InsertTextFileJob
+/usr/include/KPim5/MessageComposer/MessageComposer/ItipJob
+/usr/include/KPim5/MessageComposer/MessageComposer/ItipPart
 /usr/include/KPim5/MessageComposer/MessageComposer/JobBase
+/usr/include/KPim5/MessageComposer/MessageComposer/KeyResolver
 /usr/include/KPim5/MessageComposer/MessageComposer/Kleo_Util
 /usr/include/KPim5/MessageComposer/MessageComposer/MDNAdviceDialog
 /usr/include/KPim5/MessageComposer/MessageComposer/MDNAdviceHelper
@@ -290,7 +294,6 @@ popd
 /usr/include/KPim5/MessageComposer/MessageComposer/MessagePart
 /usr/include/KPim5/MessageComposer/MessageComposer/MessageSender
 /usr/include/KPim5/MessageComposer/MessageComposer/MultipartJob
-/usr/include/KPim5/MessageComposer/MessageComposer/NearExpiryChecker
 /usr/include/KPim5/MessageComposer/MessageComposer/PluginActionType
 /usr/include/KPim5/MessageComposer/MessageComposer/PluginComposerInterface
 /usr/include/KPim5/MessageComposer/MessageComposer/PluginEditor
@@ -356,6 +359,7 @@ popd
 /usr/include/KPim5/MessageComposer/messagecomposer/convertsnippetvariablesjob.h
 /usr/include/KPim5/MessageComposer/messagecomposer/convertsnippetvariablesutil.h
 /usr/include/KPim5/MessageComposer/messagecomposer/draftstatus.h
+/usr/include/KPim5/MessageComposer/messagecomposer/editorwatcher.h
 /usr/include/KPim5/MessageComposer/messagecomposer/encryptjob.h
 /usr/include/KPim5/MessageComposer/messagecomposer/followupreminder.h
 /usr/include/KPim5/MessageComposer/messagecomposer/followupremindercreatejob.h
@@ -364,7 +368,10 @@ popd
 /usr/include/KPim5/MessageComposer/messagecomposer/imagescalingwidget.h
 /usr/include/KPim5/MessageComposer/messagecomposer/infopart.h
 /usr/include/KPim5/MessageComposer/messagecomposer/inserttextfilejob.h
+/usr/include/KPim5/MessageComposer/messagecomposer/itipjob.h
+/usr/include/KPim5/MessageComposer/messagecomposer/itippart.h
 /usr/include/KPim5/MessageComposer/messagecomposer/jobbase.h
+/usr/include/KPim5/MessageComposer/messagecomposer/keyresolver.h
 /usr/include/KPim5/MessageComposer/messagecomposer/kleo_util.h
 /usr/include/KPim5/MessageComposer/messagecomposer/maintextjob.h
 /usr/include/KPim5/MessageComposer/messagecomposer/mdnadvicedialog.h
@@ -379,7 +386,6 @@ popd
 /usr/include/KPim5/MessageComposer/messagecomposer/messagepart.h
 /usr/include/KPim5/MessageComposer/messagecomposer/messagesender.h
 /usr/include/KPim5/MessageComposer/messagecomposer/multipartjob.h
-/usr/include/KPim5/MessageComposer/messagecomposer/nearexpirychecker.h
 /usr/include/KPim5/MessageComposer/messagecomposer/pluginactiontype.h
 /usr/include/KPim5/MessageComposer/messagecomposer/plugincomposerinterface.h
 /usr/include/KPim5/MessageComposer/messagecomposer/plugineditor.h
@@ -510,7 +516,6 @@ popd
 /usr/include/KPim5/MessageViewer/MessageViewer/DKIMRule
 /usr/include/KPim5/MessageViewer/MessageViewer/DKIMViewerMenu
 /usr/include/KPim5/MessageViewer/MessageViewer/DKIMWidgetInfo
-/usr/include/KPim5/MessageViewer/MessageViewer/EditorWatcher
 /usr/include/KPim5/MessageViewer/MessageViewer/FileHtmlWriter
 /usr/include/KPim5/MessageViewer/MessageViewer/GrantleeHeaderStyle
 /usr/include/KPim5/MessageViewer/MessageViewer/GrantleeHeaderTestStyle
@@ -568,7 +573,6 @@ popd
 /usr/include/KPim5/MessageViewer/messageviewer/attachmentstrategy.h
 /usr/include/KPim5/MessageViewer/messageviewer/bodyparturlhandler.h
 /usr/include/KPim5/MessageViewer/messageviewer/bufferedhtmlwriter.h
-/usr/include/KPim5/MessageViewer/messageviewer/config-messageviewer.h
 /usr/include/KPim5/MessageViewer/messageviewer/configurewidget.h
 /usr/include/KPim5/MessageViewer/messageviewer/csshelper.h
 /usr/include/KPim5/MessageViewer/messageviewer/csshelperbase.h
@@ -588,7 +592,6 @@ popd
 /usr/include/KPim5/MessageViewer/messageviewer/dkimrule.h
 /usr/include/KPim5/MessageViewer/messageviewer/dkimviewermenu.h
 /usr/include/KPim5/MessageViewer/messageviewer/dkimwidgetinfo.h
-/usr/include/KPim5/MessageViewer/messageviewer/editorwatcher.h
 /usr/include/KPim5/MessageViewer/messageviewer/filehtmlwriter.h
 /usr/include/KPim5/MessageViewer/messageviewer/globalsettings_messageviewer.h
 /usr/include/KPim5/MessageViewer/messageviewer/grantleeheaderstyle.h
@@ -817,29 +820,29 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKPim5MessageComposer.so.5.23.3
-/V3/usr/lib64/libKPim5MessageCore.so.5.23.3
-/V3/usr/lib64/libKPim5MessageList.so.5.23.3
-/V3/usr/lib64/libKPim5MessageViewer.so.5.23.3
-/V3/usr/lib64/libKPim5MimeTreeParser.so.5.23.3
-/V3/usr/lib64/libKPim5TemplateParser.so.5.23.3
-/V3/usr/lib64/libKPim5WebEngineViewer.so.5.23.3
+/V3/usr/lib64/libKPim5MessageComposer.so.5.24.0
+/V3/usr/lib64/libKPim5MessageCore.so.5.24.0
+/V3/usr/lib64/libKPim5MessageList.so.5.24.0
+/V3/usr/lib64/libKPim5MessageViewer.so.5.24.0
+/V3/usr/lib64/libKPim5MimeTreeParser.so.5.24.0
+/V3/usr/lib64/libKPim5TemplateParser.so.5.24.0
+/V3/usr/lib64/libKPim5WebEngineViewer.so.5.24.0
 /V3/usr/lib64/qt5/plugins/pim5/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /V3/usr/lib64/qt5/plugins/pim5/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
 /usr/lib64/libKPim5MessageComposer.so.5
-/usr/lib64/libKPim5MessageComposer.so.5.23.3
+/usr/lib64/libKPim5MessageComposer.so.5.24.0
 /usr/lib64/libKPim5MessageCore.so.5
-/usr/lib64/libKPim5MessageCore.so.5.23.3
+/usr/lib64/libKPim5MessageCore.so.5.24.0
 /usr/lib64/libKPim5MessageList.so.5
-/usr/lib64/libKPim5MessageList.so.5.23.3
+/usr/lib64/libKPim5MessageList.so.5.24.0
 /usr/lib64/libKPim5MessageViewer.so.5
-/usr/lib64/libKPim5MessageViewer.so.5.23.3
+/usr/lib64/libKPim5MessageViewer.so.5.24.0
 /usr/lib64/libKPim5MimeTreeParser.so.5
-/usr/lib64/libKPim5MimeTreeParser.so.5.23.3
+/usr/lib64/libKPim5MimeTreeParser.so.5.24.0
 /usr/lib64/libKPim5TemplateParser.so.5
-/usr/lib64/libKPim5TemplateParser.so.5.23.3
+/usr/lib64/libKPim5TemplateParser.so.5.24.0
 /usr/lib64/libKPim5WebEngineViewer.so.5
-/usr/lib64/libKPim5WebEngineViewer.so.5.23.3
+/usr/lib64/libKPim5WebEngineViewer.so.5.24.0
 /usr/lib64/qt5/plugins/pim5/messageviewer/grantlee/5.0/messageviewer_grantlee_extension.so
 /usr/lib64/qt5/plugins/pim5/messageviewer/headerstyle/messageviewer_defaultgrantleeheaderstyleplugin.so
 
