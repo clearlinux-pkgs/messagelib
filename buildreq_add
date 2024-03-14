@@ -22,8 +22,8 @@ libgravatar-dev
 libkdepim-dev
 libkleo-dev
 pimcommon-dev
-qca-qt5-dev
-qtwebengine-dev
+qca-qt6-dev
+qt6webengine-dev
 syntax-highlighting-dev
 kimap-staticdev
 ktextaddons-dev
